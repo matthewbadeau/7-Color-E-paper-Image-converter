@@ -16,7 +16,7 @@ For best results:
 ## Quick start
 
 ```bash
-git clone
+git clone https://gitlab.com/matthew/color-e-paper-image-converter.git
 python3 ./color_epd_converter.py image.jpeg
 ```
 
