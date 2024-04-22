@@ -17,6 +17,7 @@ For best results:
 
 ```bash
 git clone https://gitlab.com/matthew/color-e-paper-image-converter.git
+cd color-e-paper-image-converter
 python3 ./color_epd_converter.py image.jpeg
 ```
 
