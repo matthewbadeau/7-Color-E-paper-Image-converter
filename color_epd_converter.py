@@ -84,7 +84,9 @@ if __name__ == '__main__':
                              "This option will not be used in batched mode (no filename specified).")
     args = parser.parse_args()
 
-    orientation = args.orientation if args.orientation else "portrait"
+    img_orientation = args.orientation if args.orientation else "portrait"
+    img_width = args.width if args.width else 480
+    img_height = args.height if args.height else 800
 
     if args.filename is not None:
         crop = True if args.crop else False
@@ -99,9 +101,17 @@ if __name__ == '__main__':
 
             img = Image.open(file).convert("RGB")
             if crop:
-                res = convert(img, orientation=orientation, crop_image=True, crop_x1=x1, crop_y1=y1, crop_x2=x2, crop_y2=y2)
+                res = convert(img,
+                              width=img_width,
+                              height=img_height,
+                              orientation=img_orientation,
+                              crop_image=True,
+                              crop_x1=x1,
+                              crop_y1=y1,
+                              crop_x2=x2,
+                              crop_y2=y2)
             else:
-                res = convert(img, orientation=orientation)
+                res = convert(img, width=img_width, height=img_height, orientation=img_orientation)
             export_path = "./export/" + os.path.basename(file.name).split(".")[0] + ".bmp"
             res.save(export_path)
             logger.info("Wrote file to {path}".format(path=export_path))
@@ -118,7 +128,7 @@ if __name__ == '__main__':
                     continue
                 filename = dirpath + file
                 img = Image.open(filename).convert("RGB")
-                res = convert(img, orientation=orientation)
+                res = convert(img, width=img_width, height=img_height, orientation=img_orientation)
                 export_path = "./export/" + file.split(".")[0] + ".bmp"
                 res.save(export_path)
                 logger.info("Wrote file to {path}".format(path=export_path))
