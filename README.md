@@ -15,12 +15,18 @@ For best results:
 
 ## Quick start
 
+Clone the project and install requirements
 ```bash
 git clone https://gitlab.com/matthew/color-e-paper-image-converter.git
 cd color-e-paper-image-converter
 python3 -m pip install -r requirements.txt
+```
+
+Move your original images to the pictures folder and then execute the script
+```bash
 python3 ./color_epd_converter.py image.jpeg
 ```
+
 
 ## Command line
 
